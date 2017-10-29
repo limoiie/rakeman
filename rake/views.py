@@ -3,4 +3,5 @@ from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse(render(request, 'rake/index.html'))
+    context = {"items": range(1, 100)}
+    return HttpResponse(render(request, 'rake/index.html', context))
