@@ -9,14 +9,98 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script src="{% static 'rake/js/material.min.js' %}"></script>
 
+    {# todo: current way to get font awesome is through http-get in js below, consider download the css file #}
+    <script src="{% static 'rake/js/font-awesome.min.js' %}"></script>
+
     <title>{% block title %}{% endblock %}</title>
+
+    {# todo: consider move defination about style into a custom css file #}
+    <!-- Uses a transparent header that draws on top of the layout's background -->
+    <style>
+        .demo-layout-transparent {
+            background: url('{% static 'rake/imgs/background.jpg' %}') center / cover;
+        }
+
+        {# The color of text in header or drawer should be color since the background is dark #}
+        .demo-layout-transparent .mdl-layout__header,
+        .mdl-mini-footer .demo-social-button {
+            /* This background is dark, so we set text to white. Use 87% black instead if
+               your background is light. */
+            color: white;
+        }
+
+        {# Middle section should be horizental center #}
+        .mdl-mini-footer__middle-section {
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
-{% block content %}
-{% endblock %}
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+    {% block header %}
+        {# base header #}
+        <header class="mdl-layout__header mdl-layout__header--waterfall mdl-layout__header--transparent">
+            <div class="mdl-layout__header-row">
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+                    <label class="mdl-button mdl-js-button mdl-button--icon"
+                           for="fixed-header-drawer-exp">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" type="text" name="sample"
+                               id="fixed-header-drawer-exp">
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-layout__header-row">
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation in header-->
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Title</span>
+            <!-- Navigation in drawer -->
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+            </nav>
+        </div>
+    {% endblock %}
 
-{% block footer %}
-    footer from base
-{% endblock %}
+    {% block content %}
+        <main class="mdl-layout__content">
+        </main>
+    {% endblock %}
+
+    {% block footer %}
+        {# base footer #}
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">RakeMan</div>
+            </div>
+            <div class="mdl-mini-footer__middle-section">
+                <a class="btn btn-success" href="https://github.com/limoiie/rakeman">
+                    <i class="fa fa-github fa-3x demo-social-button"></i>
+                </a>
+            </div>
+            <div class="mdl-mini-footer__right-section">
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Privacy & Terms</a></li>
+                </ul>
+            </div>
+        </footer>
+    {% endblock %}
+</div>
 </body>
 </html>
