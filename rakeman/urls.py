@@ -19,5 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^rake/', include('rake.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', include('rake.urls'))
+    url(r'^', include('rake.urls'))
 ]
