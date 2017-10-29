@@ -1,0 +1,20 @@
+/.vagrant
+_trial_temp*
+dropin.cache
+docs/build
+*egg-info
+.tox
+venv
+build
+dist
+.idea
+htmlcov/
+.coverage
+.coverage.*
+.cache/
+__pycache__/
+migrations/
+*.sqlite3
+
+# Windows
+Thumbs.db
