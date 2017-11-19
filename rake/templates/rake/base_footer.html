@@ -1,0 +1,29 @@
+{% block base_footer %}
+    <style>
+        {# Middle section should be horizental center #}
+        .mdl-mini-footer__middle-section {
+            margin: auto;
+        }
+        .mdl-mini-footer,
+        .mdl-mini-footer .demo-social-button {
+            color: white;
+        }
+    </style>
+    {# base footer #}
+    <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">RakeMan</div>
+        </div>
+        <div class="mdl-mini-footer__middle-section">
+            <a class="btn btn-success" href="https://github.com/limoiie/rakeman">
+                <i class="fa fa-github fa-2x demo-social-button"></i>
+            </a>
+        </div>
+        <div class="mdl-mini-footer__right-section">
+            <ul class="mdl-mini-footer__link-list">
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Privacy & Terms</a></li>
+            </ul>
+        </div>
+    </footer>
+{% endblock %}
