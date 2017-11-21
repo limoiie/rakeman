@@ -1,0 +1,33 @@
+{% block header %}
+    <style>
+        .mdl-layout__header {
+            color: white;
+        }
+        .sticky-row {
+            width: 100%;
+            z-index: 999;
+            background: rgb(158,158,158);
+            position: fixed;
+            top: 0;
+        }
+        .mdl-textfield__expandable-holder {
+            width: 256px;
+        }
+    </style>
+    <div class="mdl-layout__header"><!-- span space --></div>
+    <header class="mdl-layout__header sticky-row">
+        <div class="mdl-layout__header-row">
+            <div class="mdl-textfield mdl-js-textfield
+                  mdl-textfield--floating-label mdl-textfield--align-left">
+                <label class="mdl-button mdl-js-button mdl-button--icon"
+                       for="query_input">
+                    <i class="material-icons">search</i>
+                </label>
+                <div class="mdl-textfield__expandable-holder">
+                    <input class="mdl-textfield__input" type="text" name="sample"
+                           id="query_input" value="{{ query_string }}">
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}

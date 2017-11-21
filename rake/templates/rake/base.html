@@ -7,59 +7,26 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{% static 'rake/css/material.grey-red.min.css' %}">
-    <script src="{% static 'rake/js/material.min.js' %}"></script>
-    <script src="{% static 'rake/js/sticky-header.js' %}"></script>
 
-    {# todo: current way to get font awesome is through http-get in js below, consider download the css file #}
+    <script src="{% static 'rake/js/material.js' %}"></script>
+    <script src="{% static 'rake/js/jquery-3.2.1.js' %}"></script>
+    <script src="{% static 'rake/js/sticky-header.js' %}"></script>
     <script src="{% static 'rake/js/font-awesome.min.js' %}"></script>
+    <script src="{% static 'rake/js/rakeman.js' %}"></script>
 
     <title>{% block title %}{% endblock %}</title>
-
-    {# todo: consider move defination about style into a custom css file #}
-    <!-- Uses a transparent header that draws on top of the layout's background -->
-    <style>
-        {# comment background #}
-{#        .demo-layout-transparent {#}
-{#            background: url('{% static 'rake/imgs/background.jpg' %}') center / cover;#}
-{#        }#}
-
-        {# The color of text in header or drawer should be black since the background is light #}
-        .demo-layout-transparent .mdl-layout__header {
-            color: black;
-        }
-    </style>
 </head>
 <body>
 <div class="demo-layout-transparent mdl-layout mdl-js-layout">
     {% block header %}
-        {# base header #}
-        <header class="mdl-layout__header mdl-layout__header--waterfall mdl-layout__header--transparent">
-            <div class="mdl-layout__header-row">
-                <div class="mdl-layout-spacer"></div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-                    <label class="mdl-button mdl-js-button mdl-button--icon"
-                           for="fixed-header-drawer-exp">
-                        <i class="material-icons">search</i>
-                    </label>
-                    <div class="mdl-textfield__expandable-holder">
-                        <input class="mdl-textfield__input" type="text" name="sample"
-                               id="fixed-header-drawer-exp">
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-layout__header-row">
-                <div class="mdl-layout-spacer"></div>
-                <!-- Navigation in header-->
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="">Link</a>
-                </nav>
-            </div>
-        </header>
+        {% include "rake/search_header.html" %}
     {% endblock %}
 
-    {% block content %}
-    {% endblock %}
+    <!-- span -->
+    <main class="mdl-layout__content">
+        {% block content %}
+        {% endblock %}
+    </main>
 
     {% block footer %}
         {% include "rake/base_footer.html" %}
