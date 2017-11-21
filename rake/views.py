@@ -12,6 +12,8 @@ def index(request):
 
 # todo
 def query(request, query_string, page):
+    raw_query_string = query_string
+    query_string = query_string[1:len(query_string)-1]
     results = []
     for i in range(1, 10):
         results.append(QueryResultItem(
@@ -23,5 +25,10 @@ def query(request, query_string, page):
             source='XinHua',
             datetime=timezone.now()
         ))
-    context = {"query_string": query_string, "current_page": 2, "total_page": 10, "results": results}
+    context = {
+        "query_string": raw_query_string,
+        "current_page": int(page),
+        "total_page": range(0, 6),
+        "results": results
+    }
     return HttpResponse(render(request, 'rake/news_list.html', context))
