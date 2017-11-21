@@ -22,8 +22,11 @@
         {% include "rake/search_header.html" %}
     {% endblock %}
 
-    {% block content %}
-    {% endblock %}
+    <!-- span -->
+    <main class="mdl-layout__content">
+        {% block content %}
+        {% endblock %}
+    </main>
 
     {% block footer %}
         {% include "rake/base_footer.html" %}
