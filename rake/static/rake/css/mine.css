@@ -1,0 +1,14 @@
+.mdl-menu__outline {
+    top: 20px;
+    left: 40px;
+}
+
+.mdl-menu {
+    top: 20px;
+    left: 40px;
+    width: 330px;
+}
+
+code {
+    background: yellow;
+}
