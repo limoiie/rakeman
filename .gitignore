@@ -17,4 +17,4 @@ migrations/
 *.sqlite3
 
 # Windows
-Thumbs.db
+*.db
