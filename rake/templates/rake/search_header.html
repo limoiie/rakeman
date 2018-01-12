@@ -3,31 +3,35 @@
         .mdl-layout__header {
             color: white;
         }
-        .sticky-row {
-            width: 100%;
-            z-index: 999;
-            background: rgb(158,158,158);
-            position: fixed;
-            top: 0;
-        }
         .mdl-textfield__expandable-holder {
-            width: 256px;
+            width: 330px;
+            color: white;
         }
     </style>
-    <div class="mdl-layout__header"><!-- span space --></div>
-    <header class="mdl-layout__header sticky-row">
-        <div class="mdl-layout__header-row">
-            <div class="mdl-textfield mdl-js-textfield
-                  mdl-textfield--floating-label mdl-textfield--align-left">
-                <label class="mdl-button mdl-js-button mdl-button--icon"
-                       for="query_input">
-                    <i class="material-icons">search</i>
-                </label>
-                <div class="mdl-textfield__expandable-holder">
-                    <input class="mdl-textfield__input" type="text" name="sample"
-                           id="query_input" value="{{ query_string }}">
-                </div>
-            </div>
+<div class="mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+               for="query_input">
+          <i class="material-icons">search</i>
+        </label>
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-left" for="query_input">
+            <li class="mdl-menu__item md48">word1</li>
+            <li class="mdl-menu__item">word2</li>
+            <li class="mdl-menu__item">word3</li>
+        </ul>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="sample"
+                 id="query_input" value="{{ query_string }}">
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
+  <main class="mdl-layout__content">
+    <div class="page-content"><!-- Your content goes here --></div>
+  </main>
+</div>
 {% endblock %}

@@ -6,7 +6,8 @@
     {% load static %}
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="{% static 'rake/css/material.grey-red.min.css' %}">
+    <link rel="stylesheet" href="{% static 'rake/css/material.blue-red.min.css' %}">
+    <link rel="stylesheet" href="{% static 'rake/css/mine.css' %}">
 
     <script src="{% static 'rake/js/material.js' %}"></script>
     <script src="{% static 'rake/js/jquery-3.2.1.js' %}"></script>
@@ -18,19 +19,20 @@
 </head>
 <body>
 <div class="demo-layout-transparent mdl-layout mdl-js-layout">
-    {% block header %}
-        {% include "rake/search_header.html" %}
-    {% endblock %}
-
     <!-- span -->
     <main class="mdl-layout__content">
+        {% block header %}
+            {% include "rake/search_header.html" %}
+        {% endblock %}
+
         {% block content %}
+        {% endblock %}
+
+        {% block footer %}
+            {% include "rake/base_footer.html" %}
         {% endblock %}
     </main>
 
-    {% block footer %}
-        {% include "rake/base_footer.html" %}
-    {% endblock %}
 </div>
 </body>
 </html>

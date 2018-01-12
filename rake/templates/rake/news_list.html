@@ -10,7 +10,7 @@
             color: transparent;
         }
         .demo-card-wide {
-            width: 512px;
+            width: 800px;
             margin: 15px auto;
         }
         .pagination {
@@ -30,60 +30,69 @@
         .pagination .page-number {
             margin-top: 14px;
         }
+        .main_content {
+            margin-top: 100px;
+        }
     </style>
-    {% if results %}
-{#        <ul>#}
+    <div class="main_content">
+        <div class="demo-card-wide mdl-button--accent mdl-card mdl-shadow--2dp" style="min-height: 10px">
+            <div class="mdl-card__title">
+                <h5 class="mdl-card__title-text" style="font-size: 14px">{{ query_state }}</h5>
+            </div>
+        </div>
+        {% if results %}
             {% for result in results %}
-{#                <li>#}
-                    <div class="demo-card-wide mdl-button--accent mdl-card mdl-shadow--2dp">
-                        <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">{{ result.title }}</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            {{ result.digest }}
-                        </div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a href="{{ result.url }}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
-                                {{ query_string }}
-                                <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
-                        </div>
-                        <div class="mdl-card__menu">
-                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
-                                <i class="material-icons">share</i>
-                                <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
-                        </div>
+                <div class="demo-card-wide mdl-button--accent mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">{{ result.title|safe }}</h2>
                     </div>
-{#                </li>#}
+                    <div class="mdl-card__supporting-text">
+                        {{ result.content|safe }}
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a href="{{ result.url }}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+                            {{ result.source }}
+                            <span class="mdl-button__ripple-container">
+                                <span class="mdl-ripple"></span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="mdl-card__menu">
+                        {#                        {{ result.source }}#}
+                        {#                            <button class="<<mdl></mdl></mdl>-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">#}
+{#                                <i class="<<mater></mater>ia></materia>l-icons">share</i>#}
+{#                                <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>#}
+                    </div>
+                </div>
             {% endfor %}
-{#        </ul>#}
-    {% else %}
-        <p>No results related!</p>
-    {% endif %}
+        {% else %}
+            <p>No results related!</p>
+        {% endif %}
 
-    {% if total_page %}
-        <table class="pagination mdl-card__actions">
-            <thread>
-                <tr>
-                    {% for page in total_page %}
-                        {% if page != current_page %}
-                            <th class="active">
-                                <a class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect"
-                                   href="{% url 'rake:query' query_string page %}">
-                                    <div class="page-number">{{ page }}</div>
-                                </a>
+        {% if total_page %}
+            <table class="pagination mdl-card__actions">
+                <thread>
+                    <tr>
+                        {% for page in total_page %}
+                            {% if page != current_page %}
+                                <th class="active">
+                                    <a class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect"
+                                       href="{% url 'rake:query' raw_query_string page %}">
+                                        <div class="page-number">{{ page }}</div>
+                                    </a>
+                                </th>
+                            {% else %}
+                                <th class="inactive">
+                                    <a class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
+                                       href="{% url 'rake:query' raw_query_string page %}">
+                                        <div class="page-number">{{ page }}</div>
+                                    </a>
                             </th>
-                        {% else %}
-                            <th class="inactive">
-                                <a class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
-                                   href="{% url 'rake:query' query_string page %}">
-                                    <div class="page-number">{{ page }}</div>
-                                </a>
-                            </th>
-                        {% endif %}
-                    {% endfor %}
-                </tr>
-            </thread>
-        </table>
-    {% endif %}
-
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </thread>
+            </table>
+        {% endif %}
+    </div>
 {% endblock %}
