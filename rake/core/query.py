@@ -72,6 +72,8 @@ def generate_digest_by_terms(doc: Doc, keywords: set):
                 else:
                     doc.content = ('...' if start != 0 else '') + doc.content[start:ind + 120] + '...'
                 break
+        else:
+            doc.content = doc.content[:240]
 
     for keyword in keywords:
         doc.title = doc.title.replace(keyword, '<code>' + keyword + '</code>')
